@@ -298,7 +298,10 @@
         pronunciationDisplay.classList.toggle("show");
       });
 
-      randomBtn.addEventListener("click", displayRandomLetter);
+      randomBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        displayRandomLetter();
+      });
     </script>
   </body>
 </html>
