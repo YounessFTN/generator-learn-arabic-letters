@@ -128,6 +128,11 @@
         backdrop-filter: blur(20px);
       }
 
+      .pronunciation.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
       .pronunciation::before {
         content: "";
         position: absolute;
@@ -267,6 +272,7 @@
       const letterDisplay = document.getElementById("letterDisplay");
       const pronunciationDisplay = document.getElementById("pronunciation");
       const randomBtn = document.getElementById("randomBtn");
+      const letterContainer = document.querySelector(".letter-container");
 
       let currentIndex = -1;
 
@@ -284,7 +290,13 @@
         const letter = getRandomLetter();
         letterDisplay.innerHTML = letter.arabic;
         pronunciationDisplay.textContent = letter.pronunciation;
+        pronunciationDisplay.classList.remove("show");
       }
+
+      // Toggle pronunciation on click for mobile
+      letterContainer.addEventListener("click", () => {
+        pronunciationDisplay.classList.toggle("show");
+      });
 
       randomBtn.addEventListener("click", displayRandomLetter);
     </script>
