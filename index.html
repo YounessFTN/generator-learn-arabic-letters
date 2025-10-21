@@ -202,23 +202,32 @@
         }
       }
 
-      button {
+      .button-container {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #randomBtn {
         width: 100%;
         background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
         color: white;
         border: none;
-        padding: 18px;
+        padding: 18px 32px;
         font-size: 16px;
         font-weight: 600;
-        border-radius: 14px;
+        border-radius: 16px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
         touch-action: manipulation;
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3),
+          0 0 0 0 rgba(139, 92, 246, 0.5);
       }
 
-      button::before {
+      #randomBtn::before {
         content: "";
         position: absolute;
         top: 0;
@@ -227,18 +236,93 @@
         height: 100%;
         background: linear-gradient(135deg, #a78bfa 0%, #818cf8 100%);
         opacity: 0;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      button:hover::before {
+      #randomBtn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      #randomBtn:hover::before {
         opacity: 1;
       }
 
-      button:active {
-        transform: scale(0.98);
+      #randomBtn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4),
+          0 0 0 3px rgba(139, 92, 246, 0.2);
       }
 
-      button span {
+      #randomBtn span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .mode-button {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.2) 0%,
+          rgba(99, 102, 241, 0.2) 100%
+        );
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        touch-action: manipulation;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+      }
+
+      .mode-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.4) 0%,
+          rgba(99, 102, 241, 0.4) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .mode-button:hover::before {
+        opacity: 1;
+      }
+
+      .mode-button:hover {
+        border-color: rgba(139, 92, 246, 0.6);
+        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .mode-button:active {
+        transform: translateY(0) scale(0.95);
+      }
+
+      .mode-button #modeIcon {
         position: relative;
         z-index: 1;
       }
@@ -280,7 +364,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Alphabet Arabe</h1>
+      <h1>Flachcard Alphabet Arabe</h1>
       <div class="subtitle">Entraînement interactif</div>
 
       <div class="letter-container">
@@ -290,9 +374,18 @@
         <div class="pronunciation" id="pronunciation">Prononciation</div>
       </div>
 
-      <button id="randomBtn">
-        <span>Lettre aléatoire</span>
-      </button>
+      <div class="button-container">
+        <button id="randomBtn">
+          <span>Lettre aléatoire</span>
+        </button>
+        <button
+          class="mode-button"
+          id="modeBtn"
+          title="Inverser le mode d'affichage"
+        >
+          <span id="modeIcon">🔄</span>
+        </button>
+      </div>
 
       <p class="hint">Survolez la lettre pour afficher la prononciation</p>
       <p class="hint">
@@ -302,16 +395,16 @@
       </p>
       <p class="hint">
         💡 <strong>Explication de la notation EA / AA</strong><br /><br />
-        Dans ce projet, les lettres arabes sont accompagnées d’une aide à la
+        Dans ce projet, les lettres arabes sont accompagnées d'une aide à la
         prononciation.<br />
         — <strong>AA</strong> indique une voyelle plus
         <strong>ouverte et profonde</strong>, utilisée pour les lettres dites
         <em>emphatiques</em> (comme ق, ص, ض, etc.). Par exemple,
-        <strong>ق (Qaf)</strong> se prononce avec un “A” bien marqué —
+        <strong>ق (Qaf)</strong> se prononce avec un "A" bien marqué —
         <strong>Qaaf</strong>.<br />
         — <strong>EA</strong> indique un son plus
         <strong>léger et clair</strong>, comme dans <strong>ك (Kaf)</strong>,
-        dont le “a” est plus plat, proche d’un mélange entre “e” et “a” —
+        dont le "a" est plus plat, proche d'un mélange entre "e" et "a" —
         <strong>Keaf</strong>.<br /><br />
         Cette notation permet de distinguer les lettres profondes des lettres
         légères selon leur
@@ -354,11 +447,14 @@
       const letterDisplay = document.getElementById("letterDisplay");
       const pronunciationDisplay = document.getElementById("pronunciation");
       const randomBtn = document.getElementById("randomBtn");
+      const modeBtn = document.getElementById("modeBtn");
+      const modeIcon = document.getElementById("modeIcon");
       const letterContainer = document.querySelector(".letter-container");
 
       let currentIndex = -1;
       let touchStartY = 0;
       let touchMoved = false;
+      let mode = "arabic"; // "arabic" ou "pronunciation"
 
       function getRandomLetter() {
         let newIndex;
@@ -372,9 +468,28 @@
 
       function displayRandomLetter() {
         const letter = getRandomLetter();
-        letterDisplay.innerHTML = letter.arabic;
-        pronunciationDisplay.textContent = letter.pronunciation;
+
+        if (mode === "arabic") {
+          letterDisplay.innerHTML = letter.arabic;
+          pronunciationDisplay.textContent = letter.pronunciation;
+        } else {
+          letterDisplay.innerHTML = `<span style="font-size: 32px; font-weight: 500;">${letter.pronunciation}</span>`;
+          pronunciationDisplay.textContent = letter.arabic;
+        }
+
         pronunciationDisplay.classList.remove("show");
+      }
+
+      function toggleMode() {
+        mode = mode === "arabic" ? "pronunciation" : "arabic";
+        modeBtn.title =
+          mode === "arabic"
+            ? "Mode: Afficher la lettre arabe"
+            : "Mode: Afficher la prononciation";
+
+        if (currentIndex !== -1) {
+          displayRandomLetter();
+        }
       }
 
       // Gestion tactile améliorée pour mobile
@@ -415,6 +530,11 @@
       randomBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         displayRandomLetter();
+      });
+
+      modeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMode();
       });
     </script>
   </body>
