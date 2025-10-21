@@ -247,7 +247,6 @@
         color: rgba(255, 255, 255, 0.4);
         font-size: 13px;
         margin-top: 20px;
-        text-align: center;
         font-weight: 400;
       }
 
@@ -301,38 +300,55 @@
         important d'écouter attentivement la prononciation.<br /><br />
         Par exemple : ق se prononce "Qaf", ك se prononce "Kaf".
       </p>
+      <p class="hint">
+        💡 <strong>Explication de la notation EA / AA</strong><br /><br />
+        Dans ce projet, les lettres arabes sont accompagnées d’une aide à la
+        prononciation.<br />
+        — <strong>AA</strong> indique une voyelle plus
+        <strong>ouverte et profonde</strong>, utilisée pour les lettres dites
+        <em>emphatiques</em> (comme ق, ص, ض, etc.). Par exemple,
+        <strong>ق (Qaf)</strong> se prononce avec un “A” bien marqué —
+        <strong>Qaaf</strong>.<br />
+        — <strong>EA</strong> indique un son plus
+        <strong>léger et clair</strong>, comme dans <strong>ك (Kaf)</strong>,
+        dont le “a” est plus plat, proche d’un mélange entre “e” et “a” —
+        <strong>Keaf</strong>.<br /><br />
+        Cette notation permet de distinguer les lettres profondes des lettres
+        légères selon leur
+        <em>profondeur de prononciation</em>.
+      </p>
     </div>
 
     <script>
       const arabicLetters = [
-        { arabic: "ا", pronunciation: "Alif" },
-        { arabic: "ب", pronunciation: "Ba" },
-        { arabic: "ت", pronunciation: "Ta" },
-        { arabic: "ث", pronunciation: "Tha" },
-        { arabic: "ج", pronunciation: "Jim" },
-        { arabic: "ح", pronunciation: "Ha" },
-        { arabic: "خ", pronunciation: "Kha" },
-        { arabic: "د", pronunciation: "Dal" },
-        { arabic: "ذ", pronunciation: "Dhal" },
-        { arabic: "ر", pronunciation: "Ra" },
-        { arabic: "ز", pronunciation: "Zay" },
-        { arabic: "س", pronunciation: "Sin" },
-        { arabic: "ش", pronunciation: "Shin" },
-        { arabic: "ص", pronunciation: "Sad" },
-        { arabic: "ض", pronunciation: "Dad" },
-        { arabic: "ط", pronunciation: "Ta" },
-        { arabic: "ظ", pronunciation: "Dha" },
-        { arabic: "ع", pronunciation: "Ayn" },
-        { arabic: "غ", pronunciation: "Ghayn" },
-        { arabic: "ف", pronunciation: "Fa" },
-        { arabic: "ق", pronunciation: "Qaf" },
-        { arabic: "ك", pronunciation: "Kaf" },
-        { arabic: "ل", pronunciation: "Lam" },
-        { arabic: "م", pronunciation: "Mim" },
-        { arabic: "ن", pronunciation: "Nun" },
-        { arabic: "ه", pronunciation: "Ha" },
-        { arabic: "و", pronunciation: "Waw" },
-        { arabic: "ي", pronunciation: "Ya" },
+        { arabic: "ا", pronunciation: "Alif -  EA" },
+        { arabic: "ب", pronunciation: "Ba -  EA" },
+        { arabic: "ت", pronunciation: "Ta -  EA" },
+        { arabic: "ث", pronunciation: "Tha -  EA" },
+        { arabic: "ج", pronunciation: "Jim -  EA" },
+        { arabic: "ح", pronunciation: "Ha -  EA" },
+        { arabic: "خ", pronunciation: "Kha -  AA" },
+        { arabic: "د", pronunciation: "Dal -  EA" },
+        { arabic: "ذ", pronunciation: "Dhal -  EA" },
+        { arabic: "ر", pronunciation: "Ra -  AA" },
+        { arabic: "ز", pronunciation: "Zay -  EA" },
+        { arabic: "س", pronunciation: "Sin -  EA" },
+        { arabic: "ش", pronunciation: "Shin -  EA" },
+        { arabic: "ص", pronunciation: "Sad -  AA" },
+        { arabic: "ض", pronunciation: "Dad -  AA" },
+        { arabic: "ط", pronunciation: "Ta -  AA" },
+        { arabic: "ظ", pronunciation: "Dha -  AA" },
+        { arabic: "ع", pronunciation: "Ayn -  EA" },
+        { arabic: "غ", pronunciation: "Ghayn -  AA" },
+        { arabic: "ف", pronunciation: "Fa -  EA" },
+        { arabic: "ق", pronunciation: "Qaf -  AA" },
+        { arabic: "ك", pronunciation: "Kaf -  EA" },
+        { arabic: "ل", pronunciation: "Lam -  EA" },
+        { arabic: "م", pronunciation: "Mim -  EA" },
+        { arabic: "ن", pronunciation: "Nun -  EA" },
+        { arabic: "ه", pronunciation: "Ha -  EA" },
+        { arabic: "و", pronunciation: "Waw -  EA" },
+        { arabic: "ي", pronunciation: "Ya -  EA" },
       ];
 
       const letterDisplay = document.getElementById("letterDisplay");
