@@ -427,8 +427,21 @@
       }
 
       .mode-button #modeIcon {
-        position: relative;
-        z-index: 1;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-image: url("change-button-image.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: inherit;
+        /* masquer tout texte au cas où */
+        text-indent: -9999px;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
       }
 
       .hint {
@@ -487,7 +500,7 @@
           id="modeBtn"
           title="Inverser le mode d'affichage"
         >
-          <span id="modeIcon">🔄</span>
+          <span id="modeIcon" aria-hidden="true"></span>
         </button>
       </div>
 
